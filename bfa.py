@@ -4,8 +4,7 @@ import os
 
 class Bfa:
     def __init__(self):        
-        self.lista_dados = {}           
-        
+        self.lista_dados = {}        
     
     def consolidar(self, diretorio):        
         arquivos = os.listdir(diretorio)        
@@ -16,7 +15,6 @@ class Bfa:
             7586175: 'Enseada', 9753508: 'Guapira', 3792714: 'Batatan',            
             3792676: 'Piedade', 7586183: 'Rio Grande',            
             }  
-
         
         for arquivo in arquivos:            
             arq, ext = os.path.splitext(arquivo)
@@ -28,10 +26,6 @@ class Bfa:
                 resumo = df[0]['Acompanhado'].value_counts()                
                 
                 unidade = df[0]['CNES da EAS de vincula??o'].unique()
-
-                # if unidade[0] in unidades:
-                #     lista['Unidade de saúde'] = unidades[unidade[0]]                                        
-
 
                 if 'SIM' in resumo:
                     lista['Acompanhados'] = resumo['SIM']

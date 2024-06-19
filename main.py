@@ -1,8 +1,7 @@
 import sys
 from PyQt6.QtWidgets import *
-from PyQt6.QtGui import QFont
 from tela_principal import Ui_MainWindow
-from bfa2 import Bfa
+from bfa import Bfa
 
 
 class JanelaPrincipal(QMainWindow, Ui_MainWindow):
