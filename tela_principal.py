@@ -75,7 +75,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Bolsa Família"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p>Caminho do arquivo:</p></body></html>"))
         self.lbl_caminho.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
-        self.btn_abrir.setText(_translate("MainWindow", "Abrir arquivo"))
+        self.btn_abrir.setText(_translate("MainWindow", "Abrir pasta de arquivo"))
         self.groupBox.setTitle(_translate("MainWindow", "Relatórios"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Acompanhados"))
         self.comboBox.setItemText(1, _translate("MainWindow", "Não acompanhados"))
