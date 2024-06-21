@@ -48,17 +48,34 @@ class Bfa:
         percentual = (numerador / denominador) * 100
         return percentual
     
-    def pegar_unidades_profissional(self, path, usf, prof):
-        arquivos = os.listdir(path)
-        for arquivo in arquivos:            
-            arq, ext = os.path.splitext(arquivo)
+    def pegar_profissional(self, caminho, unidade):        
+        arquivos = os.listdir(caminho)
 
+        for arquivo in arquivos:
+            arq, ext = os.path.splitext(arquivo)
+            
             if ext == '.xls':
-                df = pd.read_html(path + '/' + arquivo)
-                usf1 = df[0]['CNES da EAS de vincula??o'].unique()
-                if usf in usf1:
-                    prof = df[0]['Nome do prof. de vincula??o'].unique()
-                    print(prof)
-    
-    
+                df = pd.read_html(caminho + '/' + arquivo)
+                usf = df[0]['CNES da EAS de vincula??o'].unique()
                 
+                if unidade in usf:
+                    prof = df[0]['Nome do prof. de vincula??o'].unique()
+                    return prof
+                
+    def pegar_unidades(self, caminho):
+        arquivos = os.listdir(caminho)
+        
+        lista_unidades = []
+
+        for arquivo in arquivos:
+            arq, ext = os.path.splitext(arquivo)
+            
+            if ext == '.xls':
+                df = pd.read_html(caminho + '/' + arquivo)
+                unidades_saude = df[0]['CNES da EAS de vincula??o'].unique()
+                for unidade in unidades_saude:
+                    if unidade in self.unidades:                        
+                        lista_unidades.append(self.unidades[unidade])
+                        
+        
+        return lista_unidades

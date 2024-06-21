@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>674</width>
-    <height>710</height>
+    <width>481</width>
+    <height>634</height>
    </rect>
   </property>
   <property name="font">
@@ -93,27 +93,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Situação&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="cb_situacao">
-         <item>
-          <property name="text">
-           <string>Acompanhados</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Não acompanhados</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Profissional&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -121,10 +100,30 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="cb_profissional">
+        <widget class="QComboBox" name="cb_profissional"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Acompanhando&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cb_situacao">
          <item>
           <property name="text">
-           <string>Todos</string>
+           <string>SIM</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>NÃO</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SEM INFORMAÇÃO</string>
           </property>
          </item>
         </widget>
