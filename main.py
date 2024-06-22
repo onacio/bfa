@@ -12,9 +12,9 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
         self.cb_situacao.setEnabled(False)
         self.cb_profissional.setEnabled(False)
         self.btn_gerar_relatorio.setEnabled(False)
-        self.btn_abrir.clicked.connect(self.abrir_arquivo)
-        #self.btn_gerar_relatorio.clicked.connect(self.gerar_relatorio)
-        self.cb_unidade.currentTextChanged.connect(self.gerar_relatorio)
+        self.btn_abrir.clicked.connect(self.abrir_arquivo)        
+        self.cb_unidade.currentTextChanged.connect(self.obter_profissional)
+        self.cb_profissional.currentTextChanged.connect(self.obter_acompanhado)
 
         self.unidades = {
             7209649: 'SEDE I', 7209665: 'SEDE II', 3912035: 'MARIA PRETA',
@@ -23,15 +23,8 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
             7586175: 'ENSEADA', 9753508: 'GUAPIRA', 3792714: 'BATATAN',            
             3792676: 'PIEDADE', 7586183: 'RIO GRANDE',            
             }  
-        
-    def pegar_unidades(self):
-        caminho = self.lbl_caminho.text()        
-        bfa = Bfa()
-        lista = bfa.pegar_unidades(caminho)        
-        
-        self.cb_unidade.addItems(lista)
-
-    def gerar_relatorio(self):
+      
+    def obter_profissional(self):
         self.cb_profissional.clear()
         bfa = Bfa()
         
@@ -42,7 +35,7 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
             if cb_unidade == usf:
                 cnes_unidade = cnes                
 
-        prof = bfa.pegar_profissional(self.lbl_caminho.text(), cnes_unidade)        
+        prof = bfa.obter_profissional(self.lbl_caminho.text(), cnes_unidade)        
         
         for valor in prof:      
             self.cb_profissional.addItem(str(valor))            
@@ -65,7 +58,7 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
                 self.listWidget.addItem(QListWidgetItem(f''))
         
         # Variável que armazena lista de unidades de saúde retornada da classe Bfa e método pegar_unidades
-        unidades_saude = bfa.pegar_unidades(diretorio)   
+        unidades_saude = bfa.obter_unidades(diretorio)   
 
         # Adiciona no combobox da tela a lista de unidades de saúde
         self.cb_unidade.addItems(unidades_saude)
@@ -75,7 +68,20 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
         self.cb_profissional.setEnabled(True)  
         self.btn_gerar_relatorio.setEnabled(True)
 
-        self.gerar_relatorio()
+        self.obter_profissional()
+    
+    def obter_acompanhado(self):
+        bfa = Bfa()
+        unidade_saude = next((k for k, v in self.unidades.items() if v == self.cb_unidade.currentText()), None)
+        
+        acompanhado = bfa.obter_acompanhado(
+            self.lbl_caminho.text(), 
+            unidade_saude,             
+            self.cb_profissional.currentText()
+            )
+        
+        self.cb_situacao.clear()
+        self.cb_situacao.addItems(acompanhado)
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)

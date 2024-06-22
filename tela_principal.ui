@@ -36,7 +36,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Caminho do arquivo:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Caminho dos arquivos:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -64,6 +64,10 @@
          <property name="text">
           <string>Abrir pasta de arquivos</string>
          </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/search_48.png</normaloff>img/search_48.png</iconset>
+         </property>
         </widget>
        </item>
        <item>
@@ -90,6 +94,11 @@
          <property name="enabled">
           <bool>true</bool>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
         </widget>
        </item>
        <item>
@@ -100,32 +109,28 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="cb_profissional"/>
+        <widget class="QComboBox" name="cb_profissional">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Acompanhando&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Acompanhado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QComboBox" name="cb_situacao">
-         <item>
-          <property name="text">
-           <string>SIM</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>NÃO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>SEM INFORMAÇÃO</string>
-          </property>
-         </item>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
         </widget>
        </item>
        <item>
@@ -136,8 +141,23 @@
            <height>45</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Gerar relatório</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/relatorio_48.png</normaloff>img/relatorio_48.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
          </property>
         </widget>
        </item>

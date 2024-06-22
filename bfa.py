@@ -48,7 +48,7 @@ class Bfa:
         percentual = (numerador / denominador) * 100
         return percentual
     
-    def pegar_profissional(self, caminho, unidade):        
+    def obter_profissional(self, caminho, unidade):        
         arquivos = os.listdir(caminho)
 
         for arquivo in arquivos:
@@ -62,7 +62,7 @@ class Bfa:
                     prof = df[0]['Nome do prof. de vincula??o'].unique()
                     return prof
                 
-    def pegar_unidades(self, caminho):
+    def obter_unidades(self, caminho):
         arquivos = os.listdir(caminho)
         
         lista_unidades = []
@@ -78,3 +78,17 @@ class Bfa:
                         lista_unidades.append(self.unidades[unidade])                        
         
         return lista_unidades
+    
+    def obter_acompanhado(self, caminho, unidade, profissional):
+        arquivos = os.listdir(caminho)
+                        
+        for arquivo in arquivos:
+            arq, ext = os.path.splitext(arquivo)
+            
+            if ext == '.xls':
+                df = pd.read_html(caminho + '/' + arquivo)
+                unidades_saude = df[0]['CNES da EAS de vincula??o'].unique()
+                if unidade == unidades_saude:
+                    df_novo = df[0]
+                    df_prof = df_novo[df_novo['Nome do prof. de vincula??o'] == profissional]
+                    return df_prof['Acompanhado'].unique()
