@@ -38,7 +38,8 @@ class Bfa:
                 
                 total_beneficiarios = sum(lista.values())
                 percentual = self.calcular_percentual(lista['Acompanhados'], total_beneficiarios)
-                lista['Percentual de acompanhamento'] = f'{percentual:.2f}'
+                lista['Percentual de acompanhamento'] = f'{percentual}'
+                #lista['Percentual de acompanhamento'] = f'{percentual:.2f}'
             
             self.lista_dados[self.unidades[unidade[0]]] = lista
                         

@@ -47,21 +47,33 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
             bfa = Bfa()
             dados = bfa.consolidar(diretorio)     
             
-            self.listWidget.clear()       
+            self.listWidget.clear()   
+
+            percentual_acompanhados = 0.0    
+            cont = 0
             
             for chave, valor in dados.items():                
                 self.listWidget.addItem(QListWidgetItem(f'{chave}:'))                
                 
                 for ch, vl in valor.items():
                     self.listWidget.addItem(QListWidgetItem(f'-{ch} = {vl}'))
+
+                    if ch == 'Percentual de acompanhamento':
+                        percentual_acompanhados += float(vl)
+                        cont += 1
                 
                 self.listWidget.addItem(QListWidgetItem(f''))
+
+            calc = percentual_acompanhados / cont
+            print(calc)
+            
+            
         
         # Variável que armazena lista de unidades de saúde retornada da classe Bfa e método pegar_unidades
         unidades_saude = bfa.obter_unidades(diretorio)   
 
         # Adiciona no combobox da tela a lista de unidades de saúde
-        self.cb_unidade.addItems(unidades_saude)
+        self.cb_unidade.addItems(unidades_saude)        
         
         self.cb_unidade.setEnabled(True)
         self.cb_situacao.setEnabled(True)
