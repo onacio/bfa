@@ -64,10 +64,9 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
                 
                 self.listWidget.addItem(QListWidgetItem(f''))
 
-            calc = percentual_acompanhados / cont
-            print(calc)
+            media = percentual_acompanhados / cont
             
-            
+            self.lbl_percentual_geral.setText(f'{media:.2f} %')
         
         # Variável que armazena lista de unidades de saúde retornada da classe Bfa e método pegar_unidades
         unidades_saude = bfa.obter_unidades(diretorio)   
