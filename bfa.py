@@ -4,7 +4,7 @@ import os
 
 class Bfa:
     def __init__(self):        
-        self.lista_dados = {}        
+        self.lista_dados = {}                       
         self.unidades = {
             7209649: 'SEDE I', 7209665: 'SEDE II', 3912035: 'MARIA PRETA',
             5413958: 'PRUDÊNCIA ROSA', 2602016: 'COQUEIROS', 2600692: 'NAGÉ',            
@@ -14,7 +14,7 @@ class Bfa:
             }  
     
     def consolidar(self, diretorio):        
-        arquivos = os.listdir(diretorio)        
+        arquivos = os.listdir(diretorio)               
         
         for arquivo in arquivos:            
             arq, ext = os.path.splitext(arquivo)
@@ -28,7 +28,7 @@ class Bfa:
                 unidade = df[0]['CNES da EAS de vincula??o'].unique()
 
                 if 'SIM' in resumo:
-                    lista['Acompanhados'] = resumo['SIM']
+                    lista['Acompanhados'] = resumo['SIM']                    
 
                 if 'SEM INFORMAÇÃO' in resumo:            
                     lista['Não acompanhados'] = resumo['SEM INFORMAÇÃO']            
@@ -36,8 +36,12 @@ class Bfa:
                 if 'NÃO' in resumo:
                     lista['Outros não acompanhados'] = resumo['NÃO']
                 
+
+                # Obtem o valor da chave se existir, acaso contrario retorna 0
+                total_parcial = lista.get('Outros não acompanhados', 0)
+
                 total_beneficiarios = sum(lista.values())
-                percentual = self.calcular_percentual(lista['Acompanhados'], total_beneficiarios)                
+                percentual = self.calcular_percentual((lista['Acompanhados'] + total_parcial), total_beneficiarios)
                 lista['Percentual de acompanhamento'] = f'{percentual:.2f}'
             
             self.lista_dados[self.unidades[unidade[0]]] = lista

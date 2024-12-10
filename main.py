@@ -66,6 +66,7 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
 
             media = percentual_acompanhados / cont
             
+            self.lbl_acompanhamento.setText(f'{media:.2f} %')
             self.lbl_percentual_geral.setText(f'{media:.2f} %')
         
         # Variável que armazena lista de unidades de saúde retornada da classe Bfa e método pegar_unidades
