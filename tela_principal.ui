@@ -146,7 +146,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btn_gerar_relatorio">
+            <widget class="QPushButton" name="btn_relatorio_excel">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -159,7 +159,30 @@
               </font>
              </property>
              <property name="text">
-              <string>Gerar relatório</string>
+              <string>Relatório em Excel</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>img/excel_48.png</normaloff>img/excel_48.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_relatorio_pdf">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>45</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Relatório em PDF</string>
              </property>
              <property name="icon">
               <iconset>
@@ -167,8 +190,8 @@
              </property>
              <property name="iconSize">
               <size>
-               <width>30</width>
-               <height>30</height>
+               <width>32</width>
+               <height>32</height>
               </size>
              </property>
             </widget>

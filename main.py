@@ -8,11 +8,16 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()        
         self.setupUi(self)
+        # Desativar componentes
         self.cb_unidade.setEnabled(False)
         self.cb_situacao.setEnabled(False)
         self.cb_profissional.setEnabled(False)
-        self.btn_gerar_relatorio.setEnabled(False)
+        self.btn_relatorio_excel.setEnabled(False)
+        self.btn_relatorio_pdf.setEnabled(False)
+        # Botões
         self.btn_abrir.clicked.connect(self.abrir_arquivo)        
+        self.btn_relatorio_excel.clicked.connect(lambda: self.relatorio("Excel"))
+        self.btn_relatorio_pdf.clicked.connect(lambda: self.relatorio("PDF"))
         self.cb_unidade.currentTextChanged.connect(self.obter_profissional)
         self.cb_profissional.currentTextChanged.connect(self.obter_acompanhado)
 
@@ -22,7 +27,10 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
             2550156: 'CAPANEMA', 2771551: 'SÃO ROQUE I', 7168462: 'SÃO ROQUE II',            
             7586175: 'ENSEADA', 9753508: 'GUAPIRA', 3792714: 'BATATAN',            
             3792676: 'PIEDADE', 7586183: 'RIO GRANDE',            
-            }  
+            } 
+
+    def relatorio(self, texto):
+        print(texto)
       
     def obter_profissional(self):
         self.cb_profissional.clear()
@@ -78,7 +86,8 @@ class JanelaPrincipal(QMainWindow, Ui_MainWindow):
         self.cb_unidade.setEnabled(True)
         self.cb_situacao.setEnabled(True)
         self.cb_profissional.setEnabled(True)  
-        self.btn_gerar_relatorio.setEnabled(True)
+        self.btn_relatorio_excel.setEnabled(True)
+        self.btn_relatorio_pdf.setEnabled(True)
 
         self.obter_profissional()
     
